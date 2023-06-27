@@ -24,6 +24,19 @@ const CreatePost = () => {
           share them with the community.
         </p>
       </div>
+
+      <form className="mt-16 max-w3xl" onSubmit={handleSubmit}>
+        <div className="flex flex-col gap-5">
+          <FormField
+            labelName="Your name"
+            type="text"
+            name="name"
+            placeholder="John Doe"
+            value={form.name}
+            handleChange={handleChange}
+          />
+        </div>
+      </form>
     </section>
   );
 };
