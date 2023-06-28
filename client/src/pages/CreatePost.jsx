@@ -15,6 +15,12 @@ const CreatePost = () => {
   const [generatingImg, setGeneratingImg] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const handleSubmit = (e) => {};
+
+  const handleChange = (e) => {};
+
+  const handleSurpriseMe = () => {};
+
   return (
     <section className="max-w-7x1 mx-auto">
       <div>
@@ -34,6 +40,17 @@ const CreatePost = () => {
             placeholder="John Doe"
             value={form.name}
             handleChange={handleChange}
+          />
+
+          <FormField
+            labelName="Prompt"
+            type="text"
+            name="prompt"
+            placeholder="The King Kong movie cover but as a cat"
+            value={form.prompt}
+            handleChange={handleChange}
+            isSurpriseMe
+            handleSurpriseMe={handleSurpriseMe}
           />
         </div>
       </form>
