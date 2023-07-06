@@ -8,6 +8,7 @@ const FormField = ({
   handleChange,
   isSurpriseMe,
   handleSurpriseMe,
+  value,
 }) => {
   return (
     <div>
