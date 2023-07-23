@@ -1,6 +1,6 @@
 import React from "react";
 
-const Loader = () => (
+export default function Loader() {
   <div role="status">
     <svg
       aria-hidden="true"
@@ -18,7 +18,5 @@ const Loader = () => (
         fill="currentFill"
       />
     </svg>
-  </div>
-);
-
-export default Loader;
+  </div>;
+}

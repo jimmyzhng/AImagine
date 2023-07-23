@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FormField } from "../components";
+import { FormField, Loader, Card } from "../components";
 
 const RenderCards = ({ data, title }) => {
   if (data?.length > 0) {
@@ -30,6 +30,7 @@ const Home = () => {
 
         if (response.ok) {
           const result = await response.json();
+          // console.log("result", result);
 
           // Show newest posts first, so we reverse it
           setAllPosts(result.data.reverse());
@@ -39,6 +40,8 @@ const Home = () => {
         setLoading(false);
       }
     };
+
+    fetchPosts();
   }, []);
 
   return (
