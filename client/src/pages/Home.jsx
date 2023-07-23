@@ -17,6 +17,7 @@ const Home = () => {
   const [searchText, setSearchText] = useState("");
   const [searchedResults, setSearchedResults] = useState(null);
   const [searchTimeout, setSearchTimeout] = useState(null);
+  console.log("all posts", allPosts);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -46,19 +47,19 @@ const Home = () => {
     fetchPosts();
   }, []);
 
+  // setTimeout prevents a request for every letter typed
   const handleSearchChange = (e) => {
     clearTimeout(searchTimeout);
-
     setSearchText(e.target.value);
 
-    // setTimeout prevents a request for every letter typed
     setSearchTimeout(
       setTimeout(() => {
-        const searchResults = allPosts.filter((item) => {
-          item.toLowerCase().includes(searchText.toLowerCase()) ||
-            item.prompt.toLowerCase().includes(searchText.toLowerCase());
-        });
-        setSearchedResults(searchResults);
+        const searchResult = allPosts.filter(
+          (item) =>
+            item.name.toLowerCase().includes(searchText.toLowerCase()) ||
+            item.prompt.toLowerCase().includes(searchText.toLowerCase())
+        );
+        setSearchedResults(searchResult);
       }, 500)
     );
   };
