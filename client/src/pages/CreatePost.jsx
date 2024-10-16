@@ -22,7 +22,8 @@ const CreatePost = () => {
       try {
         setGeneratingImg(true);
         const response = await fetch(
-          "https://aimagine-fc90.onrender.com/api/v1/dalle",
+          // "https://aimagine-fc90.onrender.com/api/v1/dalle",
+          "http://localhost:8080/api/v1/dalle",
           {
             method: "POST",
             headers: {
@@ -32,9 +33,14 @@ const CreatePost = () => {
           }
         );
 
+        if (!response.ok) {
+          const errorText = await response.text(); // Get the error text
+          throw new Error(`Error: ${response.status} - ${errorText}`);
+        }
+
         const data = await response.json();
 
-        setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
+        setForm({ ...form, photo: data.photo });
       } catch (err) {
         alert(err);
       } finally {
